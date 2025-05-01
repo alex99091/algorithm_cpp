@@ -1,6 +1,6 @@
-# 📘 Basic Algorithm Practice in C++
+# 📘 Basic Algorithm Practice in JAVA
 
-기초 알고리즘 12종 C++ 학습
+기초 알고리즘 12종 JAVA 학습
 각 알고리즘은 핵심 개념과 함께 직접 구현한 예제 포함.
 
 ---
@@ -13,6 +13,11 @@
 ```cpp
 int sum = 0;  
 for (int i = 0; i < n; i++) sum += arr[i];
+```
+
+```java
+int sum = 0;
+for (int val : arr) sum += val;
 ```
 
 ---
@@ -28,6 +33,12 @@ for (int i = 0; i < n; i++)
     if (arr[i] > 0) count++;
 ```
 
+```java
+int count = 0;
+for (int val : arr)
+    if (val > 0) count++;
+
+```
 ---
 
 ## 3. Average Algorithm (평균 알고리즘)
@@ -37,6 +48,10 @@ for (int i = 0; i < n; i++)
 
 ```cpp
 double avg = (double)sum / n;
+```
+
+```java
+double avg = (double) sum / arr.length;
 ```
 
 ---
@@ -52,6 +67,12 @@ for (int i = 1; i < n; i++)
     if (arr[i] > maxVal) maxVal = arr[i];
 ```
 
+```java
+int maxVal = arr[0];
+for (int i = 1; i < arr.length; i++)
+    if (arr[i] > maxVal) maxVal = arr[i];
+```
+
 ---
 
 ## 5. Min Algorithm (최솟값 알고리즘)
@@ -61,6 +82,12 @@ for (int i = 1; i < n; i++)
 ```cpp
 int minVal = arr[0];  
 for (int i = 1; i < n; i++)  
+    if (arr[i] < minVal) minVal = arr[i];
+```
+
+```java
+int minVal = arr[0];
+for (int i = 1; i < arr.length; i++)
     if (arr[i] < minVal) minVal = arr[i];
 ```
 
@@ -81,6 +108,15 @@ for (int i = 1; i < n; i++) {
 }
 ```
 
+```java
+int near = arr[0];
+int gap = Math.abs(arr[0] - target);
+for (int i = 1; i < arr.length; i++) {
+    int diff = Math.abs(arr[i] - target);
+    if (diff < gap) { gap = diff; near = arr[i]; }
+}
+```
+
 ---
 
 ## 7. Rank Algorithm (순위 알고리즘)
@@ -91,6 +127,12 @@ for (int i = 1; i < n; i++) {
 int rank = 1;  
 for (int i = 0; i < n; i++)  
     if (arr[i] > target) rank++;
+```
+
+```java
+int rank = 1;
+for (int val : arr)
+    if (val > target) rank++;
 ```
 
 ---
@@ -106,6 +148,15 @@ for (int i = 0; i < n - 1; i++) {
     for (int j = i + 1; j < n; j++)  
         if (arr[j] < arr[minIdx]) minIdx = j;  
     swap(arr[i], arr[minIdx]);  
+}
+```
+
+```java
+for (int i = 0; i < arr.length - 1; i++) {
+    int minIdx = i;
+    for (int j = i + 1; j < arr.length; j++)
+        if (arr[j] < arr[minIdx]) minIdx = j;
+    int tmp = arr[i]; arr[i] = arr[minIdx]; arr[minIdx] = tmp;
 }
 ```
 
@@ -125,6 +176,13 @@ for (int i = 0; i < n; i++)
     }
 ```
 
+```java
+int index = -1;
+for (int i = 0; i < arr.length; i++) {
+    if (arr[i] == target) { index = i; break; }
+}
+```
+
 ---
 
 ## 10. Merge Algorithm (병합 알고리즘)
@@ -142,6 +200,16 @@ while (i < n) merged.push_back(a[i++]);
 while (j < m) merged.push_back(b[j++]);
 ```
 
+```java
+List<Integer> merged = new ArrayList<>();
+int i = 0, j = 0;
+while (i < a.length && j < b.length) {
+    if (a[i] < b[j]) merged.add(a[i++]);
+    else merged.add(b[j++]);
+}
+while (i < a.length) merged.add(a[i++]);
+while (j < b.length) merged.add(b[j++]);
+```
 ---
 
 ## 11. Mode Algorithm (최빈값 알고리즘)
@@ -159,6 +227,14 @@ for (auto& [val, cnt] : freq)
     }
 ```
 
+```java
+Map<Integer,Integer> freq = new HashMap<>();
+for (int x : arr) freq.merge(x, 1, Integer::sum);
+int mode = arr[0], maxFreq = 0;
+for (Map.Entry<Integer,Integer> e : freq.entrySet())
+    if (e.getValue() > maxFreq) { maxFreq = e.getValue(); mode = e.getKey(); }
+```
+
 ---
 
 ## 12. Group Algorithm (그룹 알고리즘)
@@ -171,8 +247,15 @@ for (auto& item : data)
     groups[item.type].push_back(item.name);
 ```
 
+```java
+Map<String, List<String>> groups = new HashMap<>();
+for (Item item : data) {
+    groups.computeIfAbsent(item.type, k -> new ArrayList<>())
+          .add(item.name);
+}
+```
 ---
 
 ## 🏁 학습 정리
 
-- 💡 총 12개 알고리즘을 직접 구현하면서, 반복문·조건문·배열·해시맵 등 C++의 기초를 자연스럽게 연습  
+- 💡 총 12개 알고리즘을 직접 구현하면서, 반복문·조건문·배열·해시맵 등 Java && C++의 기초를 자연스럽게 연습  

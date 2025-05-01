@@ -1,7 +1,8 @@
 #include <iostream>
-using namespace std;
 
 int main() {
-    // TODO: Implement Sort Algorithm
+    std::ios::sync_with_stdio(false);
+    std::cin.tie(nullptr);
+
     return 0;
 }
